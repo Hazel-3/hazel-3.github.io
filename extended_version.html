@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铸盾攻防·逐梦安全——安全开发工程师生涯发展规划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A2463',
+                        secondary: '#3E92CC',
+                        accent: '#D8315B',
+                        light: '#1E5F74',
+                        dark: '#1A1A2E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-in-out',
+                        'slide-down': 'slideDown 0.5s ease-in-out',
+                        'slide-left': 'slideLeft 0.5s ease-in-out',
+                        'slide-right': 'slideRight 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                background-image: linear-gradient(to right, #3E92CC, #D8315B);
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+            }
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            min-height: 100vh;
+            width: 100%;
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .slide.active {
+            display: block;
+        }
+        .slide-content {
+            min-height: calc(100vh - 4rem);
+        }
+        .nav-indicator {
+            position: fixed;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        .nav-arrow.prev {
+            left: 1rem;
+        }
+        .nav-arrow.next {
+            right: 1rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animated-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .animated-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #3E92CC;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 0.4375rem;
+            top: 1rem;
+            width: 0.125rem;
+            height: calc(100% + 0.5rem);
+            background-color: #3E92CC;
+        }
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(62, 146, 204, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(62, 146, 204, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .shield-icon {
+            position: relative;
+            z-index: 1;
+        }
+        .shield-icon::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle, rgba(62, 146, 204, 0.2) 0%, rgba(62, 146, 204, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .skill-progress {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        .skill-progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            background-color: #3E92CC;
+            transition: width 1s ease-in-out;
+        }
+        .roadmap-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2rem;
+        }
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: #3E92CC;
+            z-index: 1;
+        }
+        .roadmap-item::after {
+            content: '';
+            position: absolute;
+            left: 0.9375rem;
+            top: 0.5rem;
+            width: 0.125rem;
+            height: calc(100% + 1rem);
+            background-color: #3E92CC;
+        }
+        .roadmap-item:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- 第1页：封面 -->
+    <div class="slide active" id="slide1">
+        <div class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/185caa1307534c63bf2716eec21ff5be~tplv-a9rns2rl98-image.image?rcl=2025112122100118A01B60A39900AF531F&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1766326237&x-signature=AZEpkFHAzJqybGUD7iFoL0eeOY8%3D" 
+                     alt="东北大学校园与网络安全元素融合背景" 
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-primary bg-opacity-50"></div>
+            </div>
+            <div class="relative z-10 text-center text-white px-4">
+                <div class="animated-element visible">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 text-shadow">铸盾攻防·逐梦安全</h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-8">安全开发工程师生涯发展规划</h2>
+                </div>
+                <div class="animated-element visible" style="animation-delay: 0.2s;">
+                    <p class="text-xl md:text-2xl mb-2">东北大学信息安全专业大二学生</p>
+                    <p class="text-xl md:text-2xl font-bold">XXX</p>
+                </div>
+                <div class="animated-element visible mt-12 border-t border-white border-opacity-50 pt-4 max-w-md mx-auto" style="animation-delay: 0.4s;">
+                    <p class="text-lg md:text-xl italic">自强不息 知行合一</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第2页：目录 -->
+    <div class="slide" id="slide2">
+        <div class="bg-primary text-white min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold mb-2">目录</h1>
+                <div class="w-20 h-1 bg-secondary mb-8"></div>
+            </div>
+            <div class="flex-grow grid-pattern p-6">
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 hover:bg-opacity-20 transition-all-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-search text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">职业认知</h2>
+                        </div>
+                        <p class="text-lg">为何锚定安全开发？</p>
+                    </div>
+                    <div class="card bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 hover:bg-opacity-20 transition-all-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-building text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">东大特色</h2>
+                        </div>
+                        <p class="text-lg">专业资源与平台支撑</p>
+                    </div>
+                    <div class="card bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 hover:bg-opacity-20 transition-all-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-user text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">自我剖析</h2>
+                        </div>
+                        <p class="text-lg">知识储备与能力评估</p>
+                    </div>
+                    <div class="card bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 hover:bg-opacity-20 transition-all-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-road text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">核心规划</h2>
+                        </div>
+                        <p class="text-lg">四阶段递进式成长路径</p>
+                    </div>
+                    <div class="card bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 hover:bg-opacity-20 transition-all-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-code text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">技术路线</h2>
+                        </div>
+                        <p class="text-lg">安全开发技能学习地图</p>
+                    </div>
+                    <div class="card bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 hover:bg-opacity-20 transition-all-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-map-marker text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">区域分析</h2>
+                        </div>
+                        <p class="text-lg">东北安全产业发展机遇</p>
+                    </div>
+                    <div class="card bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 hover:bg-opacity-20 transition-all-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-trophy text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">竞争力塑造</h2>
+                        </div>
+                        <p class="text-lg">三维度构建核心优势</p>
+                    </div>
+                    <div class="card bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 hover:bg-opacity-20 transition-all-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-calendar text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">行动计划</h2>
+                        </div>
+                        <p class="text-lg">时间管理与执行策略</p>
+                    </div>
+                    <div class="card bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 hover:bg-opacity-20 transition-all-300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-bullseye text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">职业愿景</h2>
+                        </div>
+                        <p class="text-lg">扎根东北服务产业</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第3页：职业认知 -->
+    <div class="slide" id="slide3">
+        <div class="bg-gray-50 min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-primary mb-2">职业认知</h1>
+                <h2 class="text-xl font-semibold text-secondary mb-2">安全开发工程师的核心价值</h2>
+                <div class="w-20 h-1 bg-secondary mb-8"></div>
+            </div>
+            <div class="flex-grow p-6">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 岗位定位 -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center mr-4">
+                                <i class="fa fa-shield text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-primary">岗位定位：攻防武器锻造者</h3>
+                        </div>
+                        <p class="text-gray-700 text-lg mb-4">
+                            以编程技术将安全逻辑转化为工具、组件、防护体系，衔接"理论安全"与"实战防护"，解决定制化防护需求。
+                        </p>
+                        <p class="text-gray-700 text-lg">
+                            运用编程技术将安全逻辑转化为可落地的工具、组件及防护体系，精准衔接"理论安全"与"实战防护"，高效解决企业定制化安全防护需求。
+                        </p>
+                    </div>
+                    
+                    <!-- 行业机遇 -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center mr-4">
+                                <i class="fa fa-line-chart text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-primary">行业机遇：三重需求驱动</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                    <i class="fa fa-users text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">刚性需求</h4>
+                                    <p class="text-gray-700">国内缺口23万，复合型人才缺口超60%，东北制造业/能源转型需求迫切</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                    <i class="fa fa-cloud text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">技术拓展</h4>
+                                    <p class="text-gray-700">云原生、AI催生新场景，云安全、大模型安全开发成热点</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                    <i class="fa fa-gavel text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">政策护航</h4>
+                                    <p class="text-gray-700">《数据安全法》等强制合规，技术壁垒高，规避35岁危机</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第4页：东大特色资源 -->
+    <div class="slide" id="slide4">
+        <div class="bg-gray-50 min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-primary mb-2">东大特色资源</h1>
+                <h2 class="text-xl font-semibold text-secondary mb-2">专业平台与学科优势</h2>
+                <div class="w-20 h-1 bg-secondary mb-8"></div>
+            </div>
+            <div class="flex-grow p-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="h-40 bg-primary flex items-center justify-center">
+                                <i class="fa fa-flask text-6xl text-white"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-primary mb-3">云安全实验室</h3>
+                                <p class="text-gray-700 mb-4">
+                                    专注于云安全、容器安全、DevSecOps等前沿技术研究，提供先进的实验环境和导师指导。
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Docker</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Kubernetes</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">DevSecOps</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="h-40 bg-primary flex items-center justify-center">
+                                <i class="fa fa-trophy text-6xl text-white"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-primary mb-3">网络安全竞赛集训队</h3>
+                                <p class="text-gray-700 mb-4">
+                                    由校赛获奖选手组成，定期训练，参加全国大学生信息安全竞赛等高水平赛事。
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">CTF</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">漏洞挖掘</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">攻防演练</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="h-40 bg-primary flex items-center justify-center">
+                                <i class="fa fa-lightbulb-o text-6xl text-white"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-primary mb-3">大学生创新训练计划</h3>
+                                <p class="text-gray-700 mb-4">
+                                    提供项目资金支持和导师指导，鼓励学生开展创新性研究和实践项目。
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">项目开发</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">学术研究</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">成果转化</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-primary mb-4">学科优势：制造业信息化与冶金安全</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-gray-700 mb-4">
+                                    东北大学在制造业信息化、冶金行业安全等领域具有深厚的研究积淀，与东北区域产业需求高度契合。
+                                </p>
+                                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                    <li>工业控制系统安全</li>
+                                    <li>智能制造安全保障</li>
+                                    <li>冶金行业信息安全</li>
+                                    <li>能源系统安全防护</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-gray-800 mb-3">区域产业需求匹配</h4>
+                                <div class="space-y-3">
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-gray-700">制造业安全</span>
+                                            <span class="text-sm font-medium text-gray-700">90%</span>
+                                        </div>
+                                        <div class="skill-progress">
+                                            <div class="skill-progress-bar" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-gray-700">能源行业安全</span>
+                                            <span class="text-sm font-medium text-gray-700">85%</span>
+                                        </div>
+                                        <div class="skill-progress">
+                                            <div class="skill-progress-bar" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-gray-700">智能制造安全</span>
+                                            <span class="text-sm font-medium text-gray-700">80%</span>
+                                        </div>
+                                        <div class="skill-progress">
+                                            <div class="skill-progress-bar" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm font-medium text-gray-700">云计算安全</span>
+                                            <span class="text-sm font-medium text-gray-700">75%</span>
+                                        </div>
+                                        <div class="skill-progress">
+                                            <div class="skill-progress-bar" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第5页：自我剖析 -->
+    <div class="slide" id="slide5">
+        <div class="bg-gray-50 min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-primary mb-2">自我剖析</h1>
+                <h2 class="text-xl font-semibold text-secondary mb-2">知识储备与能力评估</h2>
+                <div class="w-20 h-1 bg-secondary mb-8"></div>
+            </div>
+            <div class="flex-grow p-6">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 技术能力雷达图 -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-primary mb-4 text-center">技术能力雷达图</h3>
+                        <div class="h-80">
+                            <canvas id="skillRadarChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- 项目经验 -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-primary mb-4">项目经验与实践</h3>
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-secondary pl-4">
+                                <h4 class="font-bold text-lg text-gray-800">轻量级日志审计工具开发</h4>
+                                <p class="text-gray-500 text-sm mb-2">大学生创新训练计划项目 | 2025.03 - 至今</p>
+                                <p class="text-gray-700">
+                                    开发一款轻量级日志审计工具，实现日志收集、分析、异常检测功能，提升系统安全监控能力。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Python</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Flask</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">日志分析</span>
+                                </div>
+                            </div>
+                            <div class="border-l-4 border-secondary pl-4">
+                                <h4 class="font-bold text-lg text-gray-800">网络安全竞赛集训</h4>
+                                <p class="text-gray-500 text-sm mb-2">校网络安全竞赛集训队 | 2024.09 - 至今</p>
+                                <p class="text-gray-700">
+                                    参与CTF竞赛训练，学习Web渗透、漏洞利用、密码学等知识，提升攻防实战能力。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">CTF</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Web渗透</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">漏洞利用</span>
+                                </div>
+                            </div>
+                            <div class="border-l-4 border-secondary pl-4">
+                                <h4 class="font-bold text-lg text-gray-800">个人安全工具开发</h4>
+                                <p class="text-gray-500 text-sm mb-2">自主项目 | 2024.07 - 2024.08</p>
+                                <p class="text-gray-700">
+                                    开发简单的端口扫描器和弱口令检测工具，实践网络编程与安全工具开发技术。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">C语言</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">网络编程</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">安全工具</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第6页：核心规划 -->
+    <div class="slide" id="slide6">
+        <div class="bg-gray-50 min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-primary mb-2">核心规划</h1>
+                <h2 class="text-xl font-semibold text-secondary mb-2">四阶段递进式成长路径（在校+职场）</h2>
+                <p class="text-gray-600 italic mb-8">核心逻辑：以"技术深度+实战经验+行业认知"为目标，分阶段落地任务</p>
+            </div>
+            <div class="flex-grow p-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="relative mb-12">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/cba3af94b2754f7ea7bef894ccf69546~tplv-a9rns2rl98-image.image?rcl=2025112122100118A01B60A39900AF531F&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1766326254&x-signature=iH9f3JraEuicPIkY3qrGPZCQXVY%3D" 
+                             alt="四阶段成长路径" 
+                             class="w-full h-auto rounded-lg shadow-lg mb-8">
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th class="py-3 px-4 text-left text-lg">阶段</th>
+                                    <th class="py-3 px-4 text-left text-lg">时间</th>
+                                    <th class="py-3 px-4 text-left text-lg">核心目标</th>
+                                    <th class="py-3 px-4 text-left text-lg">关键任务</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-4 font-bold">在校筑基</td>
+                                    <td class="py-3 px-4">当前-大四</td>
+                                    <td class="py-3 px-4">具备初级能力，冲刺实习</td>
+                                    <td class="py-3 px-4">课程攻坚+工具开发+竞赛+大创</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-4 font-bold">实习淬炼</td>
+                                    <td class="py-3 px-4">大四-职场1年</td>
+                                    <td class="py-3 px-4">衔接职场，独立完成基础任务</td>
+                                    <td class="py-3 px-4">东北企业实习+流程熟悉+软技能提升</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-4 font-bold">职场进阶</td>
+                                    <td class="py-3 px-4">职场2-5年</td>
+                                    <td class="py-3 px-4">成长为中级工程师</td>
+                                    <td class="py-3 px-4">复杂工具开发+云安全+项目主导</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-3 px-4 font-bold">领域专精</td>
+                                    <td class="py-3 px-4">职场5年+</td>
+                                    <td class="py-3 px-4">行业专家+团队管理</td>
+                                    <td class="py-3 px-4">工业/AI安全专精+体系建设+管理</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第7页：重点阶段详解 -->
+    <div class="slide" id="slide7">
+        <div class="bg-gray-50 min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-primary mb-2">重点阶段详解</h1>
+                <h2 class="text-xl font-semibold text-secondary mb-8">在校筑基与实习淬炼</h2>
+            </div>
+            <div class="flex-grow p-6">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 在校筑基期 -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-primary">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center mr-4">
+                                <i class="fa fa-graduation-cap text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-primary">在校筑基期</h3>
+                                <p class="text-secondary font-semibold">核心落地</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-lg text-gray-800 mb-1">课程</h4>
+                                <p class="text-gray-700">主攻编程（数据结构/Java）、安全（密码学/漏洞挖掘）、交叉（云计算）三类课，辅修计科模块</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-lg text-gray-800 mb-1">技能</h4>
+                                <p class="text-gray-700">每周15h编程训练，开发端口扫描器等工具；冲刺全国信安竞赛；考取CISP-PTE证书</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-lg text-gray-800 mb-1">实践</h4>
+                                <p class="text-gray-700">优化大创项目→发校级论文；加入云安全实验室参与容器安全课题；大三暑期争取奇安信实习</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 实习淬炼期 -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-secondary">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-briefcase text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-primary">实习淬炼期</h3>
+                                <p class="text-secondary font-semibold">衔接关键</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-lg text-gray-800 mb-1">目标企业</h4>
+                                <p class="text-gray-700">沈阳制造业/大连互联网企业信息安全部门</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-lg text-gray-800 mb-1">核心工作</h4>
+                                <p class="text-gray-700">辅助开发工具、嵌入IAST至流水线、攻防数据整理</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-lg text-gray-800 mb-1">能力提升</h4>
+                                <p class="text-gray-700">掌握Git/Jenkins、学习企业开发规范、建立经验库</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第8页：技术学习路线图 -->
+    <div class="slide" id="slide8">
+        <div class="bg-gray-50 min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-primary mb-2">技术学习路线图</h1>
+                <h2 class="text-xl font-semibold text-secondary mb-8">安全开发技能成长路径</h2>
+            </div>
+            <div class="flex-grow p-6">
+                <div class="max-w-6xl mx-auto bg-white rounded-xl shadow-lg p-6">
+                    <div class="relative">
+                        <!-- 路线图时间轴 -->
+                        <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-200 ml-6"></div>
+                        
+                        <!-- 阶段1：基础阶段 -->
+                        <div class="roadmap-item">
+                            <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center absolute left-0 top-0">
+                                <span class="font-bold">1</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary mb-3">基础阶段（当前-2026年6月）</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">编程语言</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>深入学习Python（Web框架、爬虫）</li>
+                                        <li>掌握Java基础与面向对象编程</li>
+                                        <li>学习C/C++基础（内存操作、指针）</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">计算机基础</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>数据结构与算法</li>
+                                        <li>计算机网络（协议分析、Wireshark）</li>
+                                        <li>操作系统原理</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">安全基础</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>信息安全导论</li>
+                                        <li>网络攻击与防御基础</li>
+                                        <li>OWASP Top 10漏洞原理</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">实践项目</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>轻量级日志审计工具开发</li>
+                                        <li>简单端口扫描器开发</li>
+                                        <li>参与CTF竞赛训练</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 阶段2：进阶阶段 -->
+                        <div class="roadmap-item">
+                            <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center absolute left-0 top-0">
+                                <span class="font-bold">2</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary mb-3">进阶阶段（2026年7月-2027年6月）</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">安全开发技术</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>漏洞挖掘技术与工具开发</li>
+                                        <li>安全脚本编写（Python/Shell）</li>
+                                        <li>安全工具逆向分析</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">Web安全</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>Web框架安全（OWASP Top 10）</li>
+                                        <li>API安全设计与开发</li>
+                                        <li>Web渗透测试工具开发</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">云安全</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>Docker容器安全</li>
+                                        <li>Kubernetes安全配置</li>
+                                        <li>云安全工具开发</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">实践项目</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>云安全扫描工具开发</li>
+                                        <li>参与企业安全开发实习</li>
+                                        <li>全国大学生信息安全竞赛</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 阶段3：专业阶段 -->
+                        <div class="roadmap-item">
+                            <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center absolute left-0 top-0">
+                                <span class="font-bold">3</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary mb-3">专业阶段（2027年7月-2029年12月）</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">高级安全开发</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>Fuzz测试工具开发</li>
+                                        <li>恶意代码分析与检测工具</li>
+                                        <li>安全监控与告警系统</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">工业信息安全</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>工业控制系统安全</li>
+                                        <li>SCADA系统安全防护</li>
+                                        <li>工业协议安全分析</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">AI安全</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>大模型安全测试</li>
+                                        <li>对抗样本生成</li>
+                                        <li>AI安全工具开发</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-800 mb-2">实践项目</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>工业控制系统安全工具开发</li>
+                                        <li>AI安全测试平台搭建</li>
+                                        <li>主导企业级安全开发项目</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第9页：东北区域安全产业分析 -->
+    <div class="slide" id="slide9">
+        <div class="bg-gray-50 min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-primary mb-2">东北区域安全产业分析</h1>
+                <h2 class="text-xl font-semibold text-secondary mb-8">产业需求与发展机遇</h2>
+            </div>
+            <div class="flex-grow p-6">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 产业需求分布 -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-primary mb-4 text-center">东北区域安全产业需求分布</h3>
+                        <div class="h-80">
+                            <canvas id="industryDemandChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- 发展机遇 -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-primary mb-4">发展机遇与政策支持</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-industry text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">制造业数字化转型</h4>
+                                    <p class="text-gray-700">东北作为老工业基地，制造业数字化转型需求迫切，工业信息安全、智能制造安全等领域人才需求旺盛。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-bolt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">能源行业安全升级</h4>
+                                    <p class="text-gray-700">东北能源资源丰富，电力、石油、天然气等行业的安全升级改造需求大，安全开发人才缺口明显。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-building text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">政府政策支持</h4>
+                                    <p class="text-gray-700">《东北全面振兴"十四五"实施方案》等政策鼓励发展数字经济和网络安全产业，提供资金和政策支持。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-handshake-o text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">校地企合作机遇</h4>
+                                    <p class="text-gray-700">东北大学与本地企业合作密切，提供产学研结合的机会，有利于技术转化和人才培养。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第10页：竞争力塑造 -->
+    <div class="slide" id="slide10">
+        <div class="bg-gray-50 min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-primary mb-2">竞争力塑造</h1>
+                <h2 class="text-xl font-semibold text-secondary mb-8">三维度构建核心优势</h2>
+            </div>
+            <div class="flex-grow p-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="relative mb-12">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/cd7b1fc54c3f467992c7e435fc004126~tplv-a9rns2rl98-image.image?rcl=2025112122100118A01B60A39900AF531F&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1766326272&x-signature=b8Qswh6Wd5IxtYR3tj6ttbE2SLM%3D" 
+                             alt="三维度竞争力" 
+                             class="w-full h-auto rounded-lg shadow-lg">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                            <div class="w-20 h-20 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mx-auto mb-6">
+                                <i class="fa fa-map-signs text-3xl text-primary"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary mb-3">差异化优势</h3>
+                            <p class="text-gray-700">依托东大制造业信息化积淀，聚焦工业信息安全开发，布局区域重点行业需求，避免同质化竞争</p>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                            <div class="w-20 h-20 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mx-auto mb-6">
+                                <i class="fa fa-cogs text-3xl text-primary"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary mb-3">实战驱动成长</h3>
+                            <p class="text-gray-700">以大创、竞赛、项目为载体积累经验，职场承接梯度任务，定期参与攻防演练保持敏感度</p>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                            <div class="w-20 h-20 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mx-auto mb-6">
+                                <i class="fa fa-users text-3xl text-primary"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-primary mb-3">资源网络构建</h3>
+                            <p class="text-gray-700">依托校地企合作获产学研机会，加入行业社群交流，关注区域产业政策把握机遇</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第11页：行动计划与时间管理 -->
+    <div class="slide" id="slide11">
+        <div class="bg-gray-50 min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-primary mb-2">行动计划与时间管理</h1>
+                <h2 class="text-xl font-semibold text-secondary mb-8">高效执行与进度把控</h2>
+            </div>
+            <div class="flex-grow p-6">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 时间分配 -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-primary mb-4 text-center">周时间分配计划</h3>
+                        <div class="h-80">
+                            <canvas id="timeAllocationChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- 行动计划 -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-primary mb-4">近期行动计划（6个月）</h3>
+                        <div class="space-y-4">
+                            <div class="flex">
+                                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="text-white font-bold">1</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">课程学习</h4>
+                                    <p class="text-gray-700">完成《信息安全导论》《Python编程》课程，成绩保持在85分以上</p>
+                                    <p class="text-gray-500 text-sm">时间：2025年9月-2025年12月</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="text-white font-bold">2</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">技能提升</h4>
+                                    <p class="text-gray-700">每周15小时编程训练，完成2个小型安全工具开发（端口扫描器、弱口令检测）</p>
+                                    <p class="text-gray-500 text-sm">时间：2025年9月-2026年2月</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="text-white font-bold">3</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">项目推进</h4>
+                                    <p class="text-gray-700">优化大创项目"轻量级日志审计工具"，完成核心功能开发与测试</p>
+                                    <p class="text-gray-500 text-sm">时间：2025年9月-2026年1月</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="text-white font-bold">4</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">竞赛准备</h4>
+                                    <p class="text-gray-700">参加校网络安全竞赛，争取进入省赛；开始准备CISP-PTE认证考试</p>
+                                    <p class="text-gray-500 text-sm">时间：2025年10月-2026年3月</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第12页：职业愿景 -->
+    <div class="slide" id="slide12">
+        <div class="bg-primary text-white min-h-screen flex flex-col">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold mb-2">职业愿景</h1>
+                <h2 class="text-xl font-semibold mb-8">扎根东北 服务产业</h2>
+            </div>
+            <div class="flex-grow p-6 grid-pattern">
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 短期目标 -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-calendar-check-o text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">短期目标（5年内）</h2>
+                        </div>
+                        <p class="text-lg">
+                            成长为能够精准解决东北制造业、能源行业实际安全需求的中级安全开发工程师，独立主导中小型安全开发项目落地。
+                        </p>
+                    </div>
+                    
+                    <!-- 长期愿景 -->
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                                <i class="fa fa-rocket text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold">长期愿景（10年+）</h2>
+                        </div>
+                        <p class="text-lg">
+                            成为"懂产业、精技术、善创新"的安全开发专家，牵头组建团队，研发工业控制系统防护、能源数据脱敏等适配东北产业特色的安全产品，反哺母校担任企业导师，推动区域网络安全产业发展。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第13页：总结与致谢 -->
+    <div class="slide" id="slide13">
+        <div class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://p3-doubao-search-sign.byteimg.com/pgc-image/63f0156346a64b87a5d321d2a09a5915~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1779286213&x-signature=9%2Bd2odrtPjVwCBwFZXCasjJYBqs%3D" 
+                     alt="东北大学校园风光" 
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-primary bg-opacity-60"></div>
+            </div>
+            <div class="relative z-10 text-center text-white px-4">
+                <div class="animated-element visible">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-8 text-shadow">总结与展望</h1>
+                </div>
+                <div class="animated-element visible max-w-4xl mx-auto" style="animation-delay: 0.2s;">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                        <p class="text-xl mb-4">
+                            本次报告系统规划了我作为东北大学信息安全专业学生的安全开发工程师职业发展路径，从职业认知、自我剖析到四阶段成长规划，形成了完整的发展蓝图。
+                        </p>
+                        <p class="text-xl">
+                            未来，我将以"自强不息、知行合一"的校训为指引，依托学校优质资源，聚焦东北区域产业需求，持续提升技术能力与实战经验，努力成长为服务区域安全产业发展的专业人才。
+                        </p>
+                    </div>
+                </div>
+                <div class="animated-element visible mt-12" style="animation-delay: 0.4s;">
+                    <h2 class="text-3xl font-bold mb-4">感谢各位评委的聆听与指导！</h2>
+                    <div class="flex justify-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-40 transition-all-300">
+                            <i class="fa fa-envelope text-xl"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-40 transition-all-300">
+                            <i class="fa fa-phone text-xl"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-40 transition-all-300">
+                            <i class="fa fa-github text-xl"></i>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-lg">汇报人：XXX | 东北大学信息安全专业</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航指示器 -->
+    <div class="nav-indicator">
+        <div class="nav-dot active" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+        <div class="nav-dot" data-slide="3"></div>
+        <div class="nav-dot" data-slide="4"></div>
+        <div class="nav-dot" data-slide="5"></div>
+        <div class="nav-dot" data-slide="6"></div>
+        <div class="nav-dot" data-slide="7"></div>
+        <div class="nav-dot" data-slide="8"></div>
+        <div class="nav-dot" data-slide="9"></div>
+        <div class="nav-dot" data-slide="10"></div>
+        <div class="nav-dot" data-slide="11"></div>
+        <div class="nav-dot" data-slide="12"></div>
+        <div class="nav-dot" data-slide="13"></div>
+    </div>
+
+    <!-- 导航箭头 -->
+    <div class="nav-arrow prev" id="prevBtn">
+        <i class="fa fa-chevron-left"></i>
+    </div>
+    <div class="nav-arrow next" id="nextBtn">
+        <i class="fa fa-chevron-right"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const navDots = document.querySelectorAll('.nav-dot');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let currentSlide = 1;
+            const totalSlides = slides.length;
+
+            // 初始化图表
+            initCharts();
+
+            // 初始化动画元素
+            initAnimatedElements();
+
+            // 导航箭头点击事件
+            prevBtn.addEventListener('click', function() {
+                changeSlide(currentSlide - 1);
+            });
+
+            nextBtn.addEventListener('click', function() {
+                changeSlide(currentSlide + 1);
+            });
+
+            // 导航点点击事件
+            navDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideNum = parseInt(this.getAttribute('data-slide'));
+                    changeSlide(slideNum);
+                });
+            });
+
+            // 键盘导航
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    changeSlide(currentSlide - 1);
+                } else if (e.key === 'ArrowRight') {
+                    changeSlide(currentSlide + 1);
+                }
+            });
+
+            // 切换幻灯片
+            function changeSlide(slideNum) {
+                if (slideNum < 1) {
+                    slideNum = totalSlides;
+                } else if (slideNum > totalSlides) {
+                    slideNum = 1;
+                }
+
+                // 隐藏当前幻灯片
+                document.getElementById('slide' + currentSlide).classList.remove('active');
+                navDots[currentSlide - 1].classList.remove('active');
+
+                // 显示新幻灯片
+                document.getElementById('slide' + slideNum).classList.add('active');
+                navDots[slideNum - 1].classList.add('active');
+
+                currentSlide = slideNum;
+
+                // 重新初始化动画元素
+                initAnimatedElements();
+
+                // 触发动画
+                setTimeout(showAnimatedElements, 100);
+            }
+
+            // 初始化动画元素
+            function initAnimatedElements() {
+                const animatedElements = document.querySelectorAll('.animated-element');
+                animatedElements.forEach(element => {
+                    element.classList.remove('visible');
+                });
+            }
+
+            // 显示动画元素
+            function showAnimatedElements() {
+                const animatedElements = document.querySelectorAll('.animated-element');
+                animatedElements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.classList.add('visible');
+                    }, index * 200);
+                });
+            }
+
+            // 初始化图表
+            function initCharts() {
+                // 技能雷达图
+                const skillRadarCtx = document.getElementById('skillRadarChart');
+                if (skillRadarCtx) {
+                    new Chart(skillRadarCtx, {
+                        type: 'radar',
+                        data: {
+                            labels: ['编程语言', '网络安全', 'Web开发', '系统安全', '漏洞挖掘', '工具开发'],
+                            datasets: [{
+                                label: '当前能力',
+                                data: [65, 70, 55, 60, 50, 45],
+                                backgroundColor: 'rgba(62, 146, 204, 0.2)',
+                                borderColor: 'rgba(62, 146, 204, 1)',
+                                pointBackgroundColor: 'rgba(62, 146, 204, 1)',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgba(62, 146, 204, 1)'
+                            }, {
+                                label: '目标能力',
+                                data: [90, 85, 80, 85, 80, 90],
+                                backgroundColor: 'rgba(216, 49, 91, 0.2)',
+                                borderColor: 'rgba(216, 49, 91, 1)',
+                                pointBackgroundColor: 'rgba(216, 49, 91, 1)',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgba(216, 49, 91, 1)'
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                r: {
+                                    angleLines: {
+                                        display: true
+                                    },
+                                    suggestedMin: 0,
+                                    suggestedMax: 100
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // 产业需求分布图
+                const industryDemandCtx = document.getElementById('industryDemandChart');
+                if (industryDemandCtx) {
+                    new Chart(industryDemandCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['制造业安全', '能源行业安全', '金融安全', '政务安全', '其他行业'],
+                            datasets: [{
+                                data: [35, 25, 15, 15, 10],
+                                backgroundColor: [
+                                    'rgba(62, 146, 204, 0.8)',
+                                    'rgba(216, 49, 91, 0.8)',
+                                    'rgba(23, 162, 184, 0.8)',
+                                    'rgba(72, 187, 120, 0.8)',
+                                    'rgba(247, 250, 252, 0.8)'
+                                ],
+                                borderColor: [
+                                    'rgba(62, 146, 204, 1)',
+                                    'rgba(216, 49, 91, 1)',
+                                    'rgba(23, 162, 184, 1)',
+                                    'rgba(72, 187, 120, 1)',
+                                    'rgba(247, 250, 252, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom'
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // 时间分配图
+                const timeAllocationCtx = document.getElementById('timeAllocationChart');
+                if (timeAllocationCtx) {
+                    new Chart(timeAllocationCtx, {
+                        type: 'pie',
+                        data: {
+                            labels: ['课程学习', '编程训练', '项目开发', '竞赛准备', '证书考取', '休息娱乐'],
+                            datasets: [{
+                                data: [30, 25, 20, 10, 5, 10],
+                                backgroundColor: [
+                                    'rgba(62, 146, 204, 0.8)',
+                                    'rgba(216, 49, 91, 0.8)',
+                                    'rgba(23, 162, 184, 0.8)',
+                                    'rgba(72, 187, 120, 0.8)',
+                                    'rgba(247, 250, 252, 0.8)',
+                                    'rgba(108, 117, 125, 0.8)'
+                                ],
+                                borderColor: [
+                                    'rgba(62, 146, 204, 1)',
+                                    'rgba(216, 49, 91, 1)',
+                                    'rgba(23, 162, 184, 1)',
+                                    'rgba(72, 187, 120, 1)',
+                                    'rgba(247, 250, 252, 1)',
+                                    'rgba(108, 117, 125, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom'
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return context.label + ': ' + context.raw + '%';
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            // 初始显示动画元素
+            showAnimatedElements();
+        });
+    </script>
+</body>
+</html>

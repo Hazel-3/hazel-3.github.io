@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>铸盾攻防·逐梦安全——安全开发工程师生涯发展规划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A2463',
+                        secondary: '#3E92CC',
+                        accent: '#D8315B',
+                        light: '#1E5F74',
+                        dark: '#1A1A2E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                background-image: linear-gradient(to right, #3E92CC, #D8315B);
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+            }
+        }
+    </style>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .page {
+            width: 1280px;
+            height: 720px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            page-break-after: always;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #3E92CC;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 0.4375rem;
+            top: 1rem;
+            width: 0.125rem;
+            height: calc(100% + 0.5rem);
+            background-color: #3E92CC;
+        }
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(62, 146, 204, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(62, 146, 204, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .page {
+                width: 100%;
+                height: 100vh;
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+    <!-- 第1页：封面 -->
+    <div class="page">
+        <div class="relative w-full h-full flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/185caa1307534c63bf2716eec21ff5be~tplv-a9rns2rl98-image.image?rcl=2025112122100118A01B60A39900AF531F&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1766326237&x-signature=AZEpkFHAzJqybGUD7iFoL0eeOY8%3D" 
+                     alt="东北大学校园与网络安全元素融合背景" 
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-primary bg-opacity-50"></div>
+            </div>
+            <div class="relative z-10 text-center text-white px-4">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-shadow">铸盾攻防·逐梦安全</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-8">安全开发工程师生涯发展规划</h2>
+                <p class="text-xl md:text-2xl mb-2">东北大学信息安全专业大二学生</p>
+                <p class="text-xl md:text-2xl font-bold">XXX</p>
+                <div class="mt-12 border-t border-white border-opacity-50 pt-4 max-w-md mx-auto">
+                    <p class="text-lg md:text-xl italic">自强不息 知行合一</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第2页：目录 -->
+    <div class="page bg-primary text-white">
+        <div class="p-6">
+            <h1 class="text-3xl font-bold mb-2">目录</h1>
+            <div class="w-20 h-1 bg-secondary mb-8"></div>
+        </div>
+        <div class="flex-grow grid-pattern p-6">
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                            <i class="fa fa-search text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">职业认知</h2>
+                    </div>
+                    <p class="text-lg">为何锚定安全开发？</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                            <i class="fa fa-user text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">自我剖析</h2>
+                    </div>
+                    <p class="text-lg">东大积淀与个人基础</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                            <i class="fa fa-road text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">核心规划</h2>
+                    </div>
+                    <p class="text-lg">四阶段递进式成长路径</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                            <i class="fa fa-trophy text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">竞争力塑造</h2>
+                    </div>
+                    <p class="text-lg">三维度构建优势</p>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                            <i class="fa fa-bullseye text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">职业愿景</h2>
+                    </div>
+                    <p class="text-lg">扎根东北服务产业</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第3页：职业认知 -->
+    <div class="page bg-gray-50">
+        <div class="p-6">
+            <h1 class="text-3xl font-bold text-primary mb-2">职业认知</h1>
+            <h2 class="text-xl font-semibold text-secondary mb-2">安全开发工程师的核心价值</h2>
+            <div class="w-20 h-1 bg-secondary mb-8"></div>
+        </div>
+        <div class="flex-grow p-6">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- 岗位定位 -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center mr-4">
+                            <i class="fa fa-shield text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary">岗位定位：攻防武器锻造者</h3>
+                    </div>
+                    <p class="text-gray-700 text-lg mb-4">
+                        以编程技术将安全逻辑转化为工具、组件、防护体系，衔接"理论安全"与"实战防护"，解决定制化防护需求。
+                    </p>
+                    <p class="text-gray-700 text-lg">
+                        运用编程技术将安全逻辑转化为可落地的工具、组件及防护体系，精准衔接"理论安全"与"实战防护"，高效解决企业定制化安全防护需求。
+                    </p>
+                </div>
+                
+                <!-- 行业机遇 -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center mr-4">
+                            <i class="fa fa-line-chart text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary">行业机遇：三重需求驱动</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fa fa-users text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800">刚性需求</h4>
+                                <p class="text-gray-700">国内缺口23万，复合型人才缺口超60%，东北制造业/能源转型需求迫切</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fa fa-cloud text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800">技术拓展</h4>
+                                <p class="text-gray-700">云原生、AI催生新场景，云安全、大模型安全开发成热点</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                                <i class="fa fa-gavel text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-gray-800">政策护航</h4>
+                                <p class="text-gray-700">《数据安全法》等强制合规，技术壁垒高，规避35岁危机</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第4页：自我剖析 -->
+    <div class="page bg-gray-50">
+        <div class="p-6">
+            <h1 class="text-3xl font-bold text-primary mb-2">自我剖析</h1>
+            <h2 class="text-xl font-semibold text-secondary mb-2">东大赋能与个人积淀</h2>
+            <div class="w-20 h-1 bg-secondary mb-8"></div>
+        </div>
+        <div class="flex-grow p-6">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- 学校资源支撑 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-primary text-white p-6">
+                        <h3 class="text-2xl font-bold">学校资源支撑</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="w-12 h-12 rounded-full bg-secondary bg-opacity-20 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-book text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800 mb-2">课程体系</h4>
+                                    <p class="text-gray-700">《计算机网络》《C语言》《信息安全导论》等筑牢基础</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="w-12 h-12 rounded-full bg-secondary bg-opacity-20 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-flask text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800 mb-2">实践平台</h4>
+                                    <p class="text-gray-700">云安全实验室、大学生创新训练计划、网络安全竞赛集训队</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="w-12 h-12 rounded-full bg-secondary bg-opacity-20 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-star text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800 mb-2">学科优势</h4>
+                                    <p class="text-gray-700">制造业信息化、冶金安全等特色研究适配区域产业需求</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 个人能力积累 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-primary text-white p-6">
+                        <h3 class="text-2xl font-bold">个人能力积累</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="w-12 h-12 rounded-full bg-secondary bg-opacity-20 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-code text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800 mb-2">技术基础</h4>
+                                    <p class="text-gray-700">掌握C/Python、网络协议分析，熟悉OWASP Top 10漏洞原理</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="w-12 h-12 rounded-full bg-secondary bg-opacity-20 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-cogs text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800 mb-2">项目经验</h4>
+                                    <p class="text-gray-700">大创项目"轻量级日志审计工具开发"，积累全流程开发经验</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="w-12 h-12 rounded-full bg-secondary bg-opacity-20 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-lightbulb-o text-xl text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800 mb-2">思维雏形</h4>
+                                    <p class="text-gray-700">竞赛集训形成"攻防结合"思维</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第5页：核心规划 -->
+    <div class="page bg-gray-50">
+        <div class="p-6">
+            <h1 class="text-3xl font-bold text-primary mb-2">核心规划</h1>
+            <h2 class="text-xl font-semibold text-secondary mb-2">四阶段递进式成长路径（在校+职场）</h2>
+            <p class="text-gray-600 italic mb-8">核心逻辑：以"技术深度+实战经验+行业认知"为目标，分阶段落地任务</p>
+        </div>
+        <div class="flex-grow p-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="relative">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/cba3af94b2754f7ea7bef894ccf69546~tplv-a9rns2rl98-image.image?rcl=2025112122100118A01B60A39900AF531F&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1766326254&x-signature=iH9f3JraEuicPIkY3qrGPZCQXVY%3D" 
+                         alt="四阶段成长路径" 
+                         class="w-full h-auto rounded-lg shadow-lg mb-8">
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th class="py-3 px-4 text-left text-lg">阶段</th>
+                                <th class="py-3 px-4 text-left text-lg">时间</th>
+                                <th class="py-3 px-4 text-left text-lg">核心目标</th>
+                                <th class="py-3 px-4 text-left text-lg">关键任务</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-3 px-4 font-bold">在校筑基</td>
+                                <td class="py-3 px-4">当前-大四</td>
+                                <td class="py-3 px-4">具备初级能力，冲刺实习</td>
+                                <td class="py-3 px-4">课程攻坚+工具开发+竞赛+大创</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-3 px-4 font-bold">实习淬炼</td>
+                                <td class="py-3 px-4">大四-职场1年</td>
+                                <td class="py-3 px-4">衔接职场，独立完成基础任务</td>
+                                <td class="py-3 px-4">东北企业实习+流程熟悉+软技能提升</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-3 px-4 font-bold">职场进阶</td>
+                                <td class="py-3 px-4">职场2-5年</td>
+                                <td class="py-3 px-4">成长为中级工程师</td>
+                                <td class="py-3 px-4">复杂工具开发+云安全+项目主导</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-3 px-4 font-bold">领域专精</td>
+                                <td class="py-3 px-4">职场5年+</td>
+                                <td class="py-3 px-4">行业专家+团队管理</td>
+                                <td class="py-3 px-4">工业/AI安全专精+体系建设+管理</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第6页：重点阶段详解 -->
+    <div class="page bg-gray-50">
+        <div class="p-6">
+            <h1 class="text-3xl font-bold text-primary mb-2">重点阶段详解</h1>
+            <h2 class="text-xl font-semibold text-secondary mb-8">在校筑基与实习淬炼</h2>
+        </div>
+        <div class="flex-grow p-6">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 在校筑基期 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-primary">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center mr-4">
+                            <i class="fa fa-graduation-cap text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-primary">在校筑基期</h3>
+                            <p class="text-secondary font-semibold">核心落地</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-800 mb-1">课程</h4>
+                            <p class="text-gray-700">主攻编程（数据结构/Java）、安全（密码学/漏洞挖掘）、交叉（云计算）三类课，辅修计科模块</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-800 mb-1">技能</h4>
+                            <p class="text-gray-700">每周15h编程训练，开发端口扫描器等工具；冲刺全国信安竞赛；考取CISP-PTE证书</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-800 mb-1">实践</h4>
+                            <p class="text-gray-700">优化大创项目→发校级论文；加入云安全实验室参与容器安全课题；大三暑期争取奇安信实习</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 实习淬炼期 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-secondary">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mr-4">
+                            <i class="fa fa-briefcase text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-primary">实习淬炼期</h3>
+                            <p class="text-secondary font-semibold">衔接关键</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-800 mb-1">目标企业</h4>
+                            <p class="text-gray-700">沈阳制造业/大连互联网企业信息安全部门</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-800 mb-1">核心工作</h4>
+                            <p class="text-gray-700">辅助开发工具、嵌入IAST至流水线、攻防数据整理</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-800 mb-1">能力提升</h4>
+                            <p class="text-gray-700">掌握Git/Jenkins、学习企业开发规范、建立经验库</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第7页：竞争力塑造 -->
+    <div class="page bg-gray-50">
+        <div class="p-6">
+            <h1 class="text-3xl font-bold text-primary mb-2">竞争力塑造</h1>
+            <h2 class="text-xl font-semibold text-secondary mb-8">三维度构建核心优势</h2>
+        </div>
+        <div class="flex-grow p-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="relative mb-12">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/cd7b1fc54c3f467992c7e435fc004126~tplv-a9rns2rl98-image.image?rcl=2025112122100118A01B60A39900AF531F&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1766326272&x-signature=b8Qswh6Wd5IxtYR3tj6ttbE2SLM%3D" 
+                         alt="三维度竞争力" 
+                         class="w-full h-auto rounded-lg shadow-lg">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                        <div class="w-20 h-20 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mx-auto mb-6">
+                            <i class="fa fa-map-signs text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">差异化优势</h3>
+                        <p class="text-gray-700">依托东大制造业信息化积淀，聚焦工业信息安全开发，布局区域重点行业需求，避免同质化竞争</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                        <div class="w-20 h-20 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mx-auto mb-6">
+                            <i class="fa fa-cogs text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">实战驱动成长</h3>
+                        <p class="text-gray-700">以大创、竞赛、项目为载体积累经验，职场承接梯度任务，定期参与攻防演练保持敏感度</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                        <div class="w-20 h-20 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mx-auto mb-6">
+                            <i class="fa fa-users text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">资源网络构建</h3>
+                        <p class="text-gray-700">依托校地企合作获产学研机会，加入行业社群交流，关注区域产业政策把握机遇</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第8页：职业愿景 -->
+    <div class="page bg-primary text-white">
+        <div class="p-6">
+            <h1 class="text-3xl font-bold mb-2">职业愿景</h1>
+            <h2 class="text-xl font-semibold mb-8">扎根东北 服务产业</h2>
+        </div>
+        <div class="flex-grow p-6 grid-pattern">
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 短期目标 -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                            <i class="fa fa-calendar-check-o text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">短期目标（5年内）</h2>
+                    </div>
+                    <p class="text-lg">
+                        成长为能够精准解决东北制造业、能源行业实际安全需求的中级安全开发工程师，独立主导中小型安全开发项目落地。
+                    </p>
+                </div>
+                
+                <!-- 长期愿景 -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mr-4">
+                            <i class="fa fa-rocket text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">长期愿景（10年+）</h2>
+                    </div>
+                    <p class="text-lg">
+                        成为"懂产业、精技术、善创新"的安全开发专家，牵头组建团队，研发工业控制系统防护、能源数据脱敏等适配东北产业特色的安全产品，反哺母校担任企业导师，推动区域网络安全产业发展。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第9页：致谢页 -->
+    <div class="page">
+        <div class="relative w-full h-full flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://p3-doubao-search-sign.byteimg.com/pgc-image/63f0156346a64b87a5d321d2a09a5915~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1779286213&x-signature=9%2Bd2odrtPjVwCBwFZXCasjJYBqs%3D" 
+                     alt="东北大学校园风光" 
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-primary bg-opacity-60"></div>
+            </div>
+            <div class="relative z-10 text-center text-white px-4">
+                <h1 class="text-4xl md:text-5xl font-bold mb-8 text-shadow">感谢各位评委的聆听与指导！</h1>
+                <div class="max-w-md mx-auto">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
+                        <p class="text-xl md:text-2xl mb-2">汇报人：XXX</p>
+                        <p class="text-xl md:text-2xl mb-2">学校：东北大学 信息安全专业</p>
+                        <p class="text-xl md:text-2xl">联系方式：（可预留电话/邮箱）</p>
+                    </div>
+                </div>
+                <div class="mt-12">
+                    <div class="flex justify-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                            <i class="fa fa-envelope text-xl"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                            <i class="fa fa-phone text-xl"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                            <i class="fa fa-github text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
